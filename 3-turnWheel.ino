@@ -36,6 +36,7 @@ void goStraight(float distance) {
   unsigned long t = (unsigned long)((distance / wheelSpd) * 60000.0);
   delay(t);
   stopMotors();
+  delay(30);
 }
 
 void goBackward(float distance) {
@@ -45,6 +46,7 @@ void goBackward(float distance) {
   unsigned long t = (unsigned long)((distance / wheelSpd) * 60000.0);
   delay(t);
   stopMotors();
+  delay(30);
 }
 
 
@@ -53,6 +55,7 @@ void spinRight(int degree) {
   Motor.turnWheel(2, LEFT,  RPM_DRIVE);   
   delay(arcDelay(HALF_AXLE, (float)degree, (float)RPM_DRIVE));
   stopMotors();
+  delay(30);
 }
 
 void spinLeft(int degree) {
@@ -60,6 +63,7 @@ void spinLeft(int degree) {
   Motor.turnWheel(2, RIGHT, RPM_DRIVE);  
   delay(arcDelay(HALF_AXLE, (float)degree, (float)RPM_DRIVE));
   stopMotors();
+  delay(30);
 }
 
 void turnRight(int degree) {
@@ -67,12 +71,14 @@ void turnRight(int degree) {
   Motor.turnWheel(1, LEFT, RPM_DRIVE);
   delay(arcDelay(AXLE_WIDTH, (float)degree, (float)RPM_DRIVE));
   stopMotors();
+  delay(30);
 }
 void turnbackRight(int degree) {
 
-  Motor.turnWheel(2, RIGHT, RPM_DRIVE);
+  Motor.turnWheel(1, RIGHT, RPM_DRIVE);
   delay(arcDelay(AXLE_WIDTH, (float)degree, (float)RPM_DRIVE));
   stopMotors();
+  delay(30);
 }
 
 void turnLeft(int degree) {
@@ -80,6 +86,7 @@ void turnLeft(int degree) {
   Motor.turnWheel(2, RIGHT, RPM_DRIVE);
   delay(arcDelay(AXLE_WIDTH, (float)degree, (float)RPM_DRIVE));
   stopMotors();
+  delay(30);
 }
 
 
@@ -97,6 +104,7 @@ void circleRight(int degree) {
   float avgRPM = (outerRPM + innerRPM) / 2.0;
   delay(arcDelay(CIRCLE_RADIUS, (float)degree, avgRPM));
   stopMotors();
+  delay(30);
 }
 
 void circleLeft(int degree) {
@@ -113,6 +121,7 @@ void circleLeft(int degree) {
   float avgRPM = (outerRPM + innerRPM) / 2.0;
   delay(arcDelay(CIRCLE_RADIUS, (float)degree, avgRPM));
   stopMotors();
+  delay(30);
 }
 
 
@@ -133,26 +142,27 @@ void execute() {
   goStraight(60);         
   delay(1000);
 
-  // turnbackRight(90);         
-  // goBackward(60);
-  // delay(2000);
-  // goStraight(60);         
-  // spinRight(90);
+   turnbackRight(90);
+   delay(30);         
+   goBackward(50);
+   delay(2000);
+   goStraight(60);         
+   spinRight(85);
 
-  // goStraight(30);
-  // spinRight(90);
-  // delay(1000);
-  // spinLeft(90);
-  // goBackward(30);
+  goStraight(40);
+   spinRight(90);
+   delay(1000);
+    spinLeft(90);
+   goBackward(30);
 
-  // spinLeft(90);
-  // goStraight(36.5);
-  // spinRight(90);
-  // circleRight(180);      
-  // delay(1000);
+   spinLeft(90);
+   goStraight(40);
+   spinRight(90);
+   circleLeft(180);      
+   delay(1000);
 
-  // goStraight(20.5);
-  // spinLeft(70);
-  // goStraight(40);
+   goStraight(20.5);
+   spinLeft(60);
+   goStraight(40);
 
 }
